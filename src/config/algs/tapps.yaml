@@ -1,0 +1,83 @@
+# --- RODE specific parameters ---
+
+# use epsilon greedy action/role selector
+action_selector: "soft_epsilon_greedy"
+action_encoder: "obs_reward"
+epsilon_start: 1.0
+epsilon_finish: 0.05
+task_epsilon_finish: 0.05
+epsilon_anneal_time: 70000
+epsilon_anneal_time_exp: 70000
+
+runner: "episode"
+
+buffer_size: 5000
+
+# update the target network every {} episodes
+target_update_interval: 200
+
+# use the Q_Learner to train
+agent_output_type: "q"
+learner: "tapps_learner"
+double_q: True
+mixer: "qmix"
+task_mixer: "qmix"
+mixing_embed_dim: 32
+hypernet_layers: 2
+hypernet_embed: 64
+
+rnn_hidden_dim: 64 # Size of hidden state for default rnn agent
+name: "tapps"
+mac: "tapps_mac"
+agent: "tapps"
+task: 'dot'
+task_selector: 'dot'
+bi_opt: False
+
+n_task_clusters: 5
+task_interval: 5
+state_latent_dim: 32
+action_latent_dim: 20
+task_action_spaces_update_start: 50000
+
+# for interpretability
+verbose: False
+use_rnn: False
+
+# --- RODE specific parameters ---
+role_action_spaces_update_start: 50000
+
+# use the Q_Learner to train
+standardise_returns: False
+standardise_rewards: True
+# update the target network every {} episodes
+target_update_interval_or_tau: 200
+
+obs_agent_id: True
+obs_last_action: False
+obs_individual_obs: False
+evaluation_epsilon: 0.0
+task_cluster_update_start: 50000
+
+# mask_net
+use_tasks_attention: False
+temperature: 0.07
+optim_alpha: 0.99 # RMSProp alpha
+optim_eps: 0.00001 # RMSProp epsilon
+
+# ---differ selected paras --- #
+differ_reward: True
+selected: 'greedy'
+selected_ratio: 0.9
+warm_up: True
+selected_ratio_start: 0.8
+selected_ratio_end: 1.0
+warm_up_ratio: 0.6
+
+selected_alpha: 0.6
+selected_epsilon: 0.01
+beta_start: 0.6
+beta_end: 1
+
+update_cluster_start: 50000
+task_latent_dim: 20
